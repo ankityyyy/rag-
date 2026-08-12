@@ -5,9 +5,11 @@ import {langfuse} from "../utils/langfuse.js"
 
 
 export const query=async(req,res,next)=>{
+  
 
       const { text } = req.body;
     const { documentId } = req.params;
+    console.log("request come from backend",text,documentId )
     if(!documentId){
        return next(
            new ExpressError(
