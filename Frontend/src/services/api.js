@@ -1,6 +1,6 @@
 // Using relative URLs when using Vite proxy
- const API_BASE = "http://localhost:5000/api/v1";
-// const API_BASE ="https://rag-2ndp.onrender.com";
+//  const API_BASE = "http://localhost:5000/api/v1";
+ const API_BASE ="https://rag-2ndp.onrender.com/api/v1";
 
 
 //This  is the main entry point of your application when pdf is uploaded.
