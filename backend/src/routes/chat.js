@@ -1,15 +1,11 @@
 import express from 'express';
-let router= express.Router();
-import wrapAsync from "../util/wrapAsync.js";
-import {upload,askQuestion} from "../controller/chat.js";
-import multer from "multer";
-// import {storage} from "../config/cloudinary.js";
-import {uploadFile}  from "../config/cloudinary.js";
+const router =express.Router();
+import wrapAsync from "../utils/wrapAsync.js"
+import { uploadFile } from "../middleware/uploadFile.js";
+import {uploadpdf} from "../controller/ragcontroller.js"
+import {query} from "../controller/langgraph.js"
 
- 
-// router.post("/chat")
-// router.post("/upload-pdf", uploadFile.single("file"), wrapAsync(upload));
-router.post("/upload-pdf", uploadFile.single("file"), wrapAsync(upload));
-router.get("/askq/:documentId", wrapAsync(askQuestion));
+router.post("/upload-pdf",uploadFile.single("file"),wrapAsync(uploadpdf))
+router.post("/query/:documentId",wrapAsync(query))
 
 export default router
