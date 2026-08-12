@@ -6,6 +6,7 @@ dotenv.config();
 import chatRoutes from "./src/routes/chat.js"
 import ExpressError from "./src/utils/expressError.js"
 import { StatusCodes } from "http-status-codes";
+import cors from "cors";
  
 const app=express();
 
@@ -24,6 +25,14 @@ Main();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    credentials: true,
+    methods: ["GET", "POST", "PUT","PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 app.get("/",(req,res)=>{
   console.log("sever work");

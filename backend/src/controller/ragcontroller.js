@@ -51,7 +51,7 @@ try {
   // Read the PDF and convert it into LangChain Documents.
   docs = await loader.load();
 
-   console.log("STEP 1: load pdf");
+  
 
 } finally {
   // This block always runs, even if an error occurs above.
@@ -65,7 +65,7 @@ try {
   }
 }
 
- console.log("STEP 2: Create Chunks");
+ 
 
 if (!docs || docs.length === 0) {
   return next(
@@ -89,7 +89,7 @@ const batchSize = 5;
 
 for (let i = 0; i < kgDocs.length; i += batchSize) {
 
-  console.log("Processing batch:", i);
+ 
 
   const batch = kgDocs
     .slice(i, i + batchSize)
@@ -109,12 +109,12 @@ for (let i = 0; i < kgDocs.length; i += batchSize) {
   }
 }
 
-console.log("KG creation completed");
+
 
 
 const texts = splitDocs.map(doc => doc.pageContent);
 
-console.log("STEP 3: Create Embeddings");
+
 
  const embeddingService = new EmbeddingService(process.env.OPENAI_API_KEY);
 
@@ -130,7 +130,7 @@ console.log("STEP 3: Create Embeddings");
   
       const vectorStore = new VectorStore();
   
-      console.log("STEP 5: Saving to vector DB");
+   
   
   
   await vectorStore.addDocuments(splitDocs, embeddings, documentId);

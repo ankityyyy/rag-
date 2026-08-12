@@ -48,7 +48,7 @@ If there are no relationships, return [].
 
     const raw = response.choices[0].message.content;
 
-    console.log("LLM output:", raw);
+  
 
     return JSON.parse(raw);
 
