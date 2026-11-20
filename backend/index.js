@@ -7,11 +7,13 @@ import { StatusCodes } from "http-status-codes";
 
 import chatRoutes from "./src/routes/chat.js";
 import ExpressError from "./src/utils/expressError.js";
-
+ 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
+
+
 
 // Middleware
 app.use(express.json());
@@ -35,7 +37,7 @@ app.get("/", (req, res) => {
   res.send("RAG Backend is running");
 });
 
-app.get("/docker", (req, res) => {
+app.get("/api/v1/docker", (req, res) => {
   res.send("Docker route is working");
 });
 
@@ -61,7 +63,7 @@ app.use((err, req, res, next) => {
 // MongoDB
 async function Main() {
   try {
-    await mongoose.connect(process.env.MONGO_URI);
+    await mongoose.connect(process.env.ATLASDB_URL);
     console.log("MongoDB Connected");
   } catch (err) {
     console.log("MongoDB Error:", err);
@@ -74,3 +76,8 @@ Main();
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
+
+
+
+

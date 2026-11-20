@@ -169,7 +169,7 @@ const query=async(req,res,next)=>{
 
    
 
-     
+      
 
     const hydeSpan = trace.span({
   name: "hyde",
@@ -281,7 +281,6 @@ const context = topResults.map(
 const combinedText = context.join("\n");
 const entities = await extractEntities(combinedText); 
 
-console.log("Entities:", entities);
 
 
 

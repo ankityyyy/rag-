@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: backend-deployment 
+  labels:
+    app: backend-api
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: backend-app
+
+  template:
+    metadata:
+      labels:
+        app: backend-app
+
+    spec:
+      containers:
+        - name: backend-container
+          image: ankitdockerd/rag-pdf-backend:1.1
+
+          envFrom:
+            - secretRef:
+                name: rag-secret
+
+            - configMapRef:
+                name: backend-config
+
+          ports:
+            - containerPort: 5000
+
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+
+          # env:
+          # - name: OPENAI_API_KEY
+          #   valueFrom:
+          #     secretKeyRef:
+          #       name:  rag-secret
+          #       key: OPENAI_API_KEY  
+
+        

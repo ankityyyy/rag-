@@ -22,9 +22,7 @@ const QuestionInput = ({ onNewAnswer }) => {
         question
       );
 
-        console.log("Question:", question);
-console.log("Document ID:", documentId);
-console.log("Backend response:", data);
+ 
       onNewAnswer({
         question,
         answer: data.answer,

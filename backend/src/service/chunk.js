@@ -16,5 +16,8 @@ const splitter= new RecursiveCharacterTextSplitter({
 
 const splitDocs=await splitter.splitDocuments(docs)
 
+
 return splitDocs;
 }
+
+

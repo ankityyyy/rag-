@@ -71,7 +71,7 @@ async searchSimilar(queryEmbedding, documentId) {
     with_payload: true,
   });
 
-  return result.points;;
+  return result.points;
 }
 
 }
